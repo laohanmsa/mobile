@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.css" type="text/css" media="screen" />
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/lib/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="js/lib/underscore/underscore.js"></script>
+        <script type="text/javascript" src="js/lib/backbone/backbone.js"></script>
+        <script type="text/javascript" src="js/lib/backbone.localStorage/backbone.localStorage.js"></script>
+
+        <!--<script defer src="js/app.js"></script>-->
+
+        <script data-main="js/antApp" src="js/lib/requirejs/require.js"></script>
+
+        <title>Hello World</title>
+    </head>
+    <body class="ios7 native"> <!-- native | ios7 -->
+    <script id="product_item_template" type="text/template" >
+
+
+                <div class="innerLi">
+                    <div class="big"><span ><%=productName%></span><span class="light name-line"> 型号：<%=productType%></span></div>
+                    <div >
+                        <span class="light">单位：<%=unit%></span>
+                        <span class="light" >单价：<%=unitPrice%></span>
+                        <span class="light" >条码：<%=barcode%></span>
+                    </div>
+
+                </div>
+
+
+    </script>
+
+    <script id="product_detail_template" type="text/template">
+
+            <header>
+                <button class="left arrow" data-vin="view-home" data-sd="sr">
+                    <div class="label">返回</div>
+                </button>
+                <h1>产品详细信息</h1>
+
+            </header>
+            <div class="scrollMask"></div>
+            <div class="scrollWrap">
+                <div class="scroll">
+                    <div class="content">
+                        <div class="img-holder">
+                            <img class="form-main-img" src="pics/tv.jpg"/>
+                        </div>
+                        <UL class="from-ul">
+                            <li>
+                                <span class="input-label" >名称:</span> <input name="productName" placeholder="名称" type="text" value="<%=productName%>"  />
+                            </li>
+                            <li>
+                                <span class="input-label" >条码:</span> <input name="barcode" placeholder="条码" type="text" value="<%=barcode%>"  />
+                            </li>
+                            <li>
+                                <span class="input-label" >产品型号:</span> <input name="productType" placeholder="产品型号" type="text" value="<%=productType%>" />
+                            </li>
+                            <li>
+                                <span class="input-label" >统计单位:</span> <input name="unit" placeholder="统计单位" type="text"  value="<%=unit%>"/>
+                            </li>
+                            <li>
+                                <span class="input-label" >单价:</span> <input name="unitPrice" placeholder="单价" type="text" value="<%=unitPrice%>" />
+                            </li>
+                            <li>
+                                <span class="input-label for-textarea" >描述:</span>
+                                <textarea  name="desc" placeholder="描述" rows="5" value="<%=desc%>"></textarea>
+                            </li>
+
+                        </UL>
+
+                        <div class="space-holder"></div>
+                    </div>
+                </div>
+            </div>
+
+    </script>
+
+    <section id="view-checkin" class="active">
+        <header>
+            <button class="left" data-vin="view-forms" data-sd="popin">
+                <div class="label"><i class="fa fa-plus"></i></div>
+            </button>
+            <h1><i class="fa fa-search"></i><input  name="product_search" placeholder="搜索，扫码"></h1>
+        </header>
+        <div class="scrollMask"></div>
+        <div class="scrollWrap">
+            <div class="scroll">
+                <div class="content">
+                    <ul class="arrowed">
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li data-vin="view-forms" data-sd="sl">
+                            <div class="innerLi">
+                                <div class="big"><span >五金结合卡扣</span><span class="light name-line"> 型号：23XD-234</span></div>
+                                <div >
+                                    <span class="light">单位：只</span>
+                                    <span class="light" >单价：342.34</span>
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hidden" id="view-checkout">
+        <header>
+            <button class="left arrow" data-vin="view-home" data-sd="sr">
+                <div class="label">返回</div>
+            </button>
+            <h1>出库</h1>
+            <button class="right bold green" data-vin="view-done" data-sd="sl">
+                <div class="label">保存</div>
+            </button>
+        </header>
+        <div class="scrollMask"></div>
+        <div class="scrollWrap">
+            <div class="scroll">
+                <div class="content">
+                    <div class="img-holder">
+                        <img class="form-main-img" src="pics/tv.jpg"/>
+                    </div>
+                  <UL class="from-ul">
+                      <li>
+                          <span class="input-label" >条码:</span> <input placeholder="条码" type="text" />
+                      </li>
+                      <li>
+                          <span class="input-label" >产品型号:</span> <input placeholder="产品型号" type="text" />
+                      </li>
+                      <li>
+                          <span class="input-label" >统计单位:</span> <input placeholder="统计单位" type="text" />
+                      </li>
+                      <li>
+                          <span class="input-label" >单价:</span> <input placeholder="单价" type="text" />
+                      </li>
+                      <li>
+                          <span class="input-label for-textarea" >描述:</span>
+                          <textarea placeholder="描述" rows="5"></textarea>
+                      </li>
+
+                  </UL>
+
+                    <div class="space-holder"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hidden" id="view-inventory">
+        <header>
+            <h1>盘点</h1>
+            <button class="right bold" data-vin="view-home" data-sd="popout">
+                <div class="label">Done</div>
+            </button>
+        </header>
+        <div class="scrollMask"></div>
+        <div class="scrollWrap">
+            <div class="scroll">
+                <div class="content">
+                    <h2>Message sent!</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hidden" id="view-product">
+        <header>
+            <button class="left" data-vin="view-forms" data-sd="popin">
+                <div class="label"><i class="fa fa-plus"></i></div>
+            </button>
+            <h1><i class="fa fa-search"></i><input  name="product_search" placeholder="产品管理,搜索，扫码"></h1>
+        </header>
+        <div class="scrollMask"></div>
+        <div class="scrollWrap">
+            <div class="scroll">
+                <div class="content">
+                    <ul class="arrowed product-list">
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hidden" id="view-tab2">
+        <header>
+            <h1>Tab 2</h1>
+        </header>
+        <div class="scrollMask"></div>
+        <div class="scrollWrap">
+            <div class="scroll">
+                <div class="content">
+                    <h2>Some title</h2>
+                    <p>Lorem Ipsum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hidden" id="view-tab3">
+        <header>
+            <h1>Tab 3</h1>
+        </header>
+        <div class="scrollMask"></div>
+        <div class="scrollWrap">
+            <div class="scroll">
+                <div class="content">
+                    <h2>Some title</h2>
+                    <p>Lorem Ipsum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav id="main_nav">
+
+
+        <button id="btn1" class="nav_btn active" data-vin="view-checkin">
+            <i class="fa fa-download ant-nav-icon"></i>
+            <div class="label">入库</div>
+        </button>
+
+
+        <button id="btn2" class="nav_btn"  class="active" data-vin="view-checkout">
+            <i class="fa fa-upload ant-nav-icon"></i>
+            <div class="label">出库</div>
+        </button>
+
+
+        <button id="btn3" class="nav_btn"  data-vin="view-inventory">
+            <i class="fa fa-building-o ant-nav-icon"></i>
+            <div class="label">盘库</div>
+        </button>
+
+        <button id="btn4" class="nav_btn"  data-vin="view-product">
+            <i class="fa fa-paperclip ant-nav-icon"></i>
+            <div class="label">产品管理</div>
+        </button>
+    </nav>
+
+    <!--<script type="application/javascript" src="js/fastclick.js"></script>-->
+    <!--<script>-->
+        <!--$(function(){-->
+            <!--FastClick.attach(document.body);-->
+        <!--})-->
+    <!--</script>-->
+
+    </body>
+</html>

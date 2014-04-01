@@ -1,0 +1,17 @@
+{
+    "name": "pg4",
+    "version": "1.0.0",
+    "main": "index.html",
+    "ignore": [
+        ".jshintrc",
+        "**/*.txt"
+    ],
+    "dependencies": {
+        "jquery": "2.1.0",
+        "underscore": "1.6.0",
+        "backbone": "1.1.2",
+        "backbone.localStorage":"1.1.7",
+        "requirejs":"https://github.com/jrburke/requirejs.git",
+        "fastclick": "https://github.com/ftlabs/fastclick.git"
+    }
+}
